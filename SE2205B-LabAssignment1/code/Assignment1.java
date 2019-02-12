@@ -72,9 +72,9 @@ public class Assignment1 {
 	// function to sum the matrix
 	public int[][] sum(int[][] A, int[][] B, int x1, int y1, int x2, int y2, int n) {
 		int[][] array = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++)
-				array[i][j] = A[x1 + i][y1 + j] + B[x2 + i][y2 + j];
+		for (int x = 0; x < n; x++) {
+			for (int y = 0; y < n; y++)
+				array[x][y] = A[x1 + x][y1 + y] + B[x2 + x][y2 + y];
 		}
 		return array;
 	}
@@ -82,9 +82,9 @@ public class Assignment1 {
 	//function to subtract the matrix
 	public int[][] sub(int[][] A, int[][] B, int x1, int y1, int x2, int y2, int n) {
 		int[][] array = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++)
-				array[i][j] = A[x1 + i][y1 + j] - B[x2 + i][y2 + j];
+		for (int x = 0; x < n; x++) {
+			for (int y = 0; y < n; y++)
+				array[x][y] = A[x1 + x][y1 + y] - B[x2 + x][y2 + y];
 		}
 		return array;
 
@@ -94,18 +94,18 @@ public class Assignment1 {
 	public int[][] initMatrix(int n) {
 		// 2d array of n size will be initialized
 		int[][] array = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++)
-				array[i][j] = 0;
+		for (int x = 0; x < n; x++) {
+			for (int y = 0; y < n; y++)
+				array[x][y] = 0;
 		}
 		return array;
 	}
 
 	// prints out the matrix
 	public void printMatrix(int n, int[][] A) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				System.out.print(A[i][j] + " ");
+		for (int x = 0; x < n; x++) {
+			for (int y = 0; y < n; y++) {
+				System.out.print(A[x][y] + " ");
 			}
 			System.out.println();
 		}
@@ -118,10 +118,11 @@ public class Assignment1 {
 
 		int[][] A = new int[n][n];
 		while (scannedFile.hasNextLine()) {
-			for (int i = 0; i < n; i++) {
+			for (int x = 0; x < n; x++) {
 				String[] fileLine = scannedFile.nextLine().trim().split(" ");
-				for (int j = 0; j < fileLine.length; j++) {
-					A[i][j] = Integer.parseInt(fileLine[j]);
+				for (int y = 0; y < fileLine.length; y++) {
+					int matrixVal = Integer.parseInt(fileLine[y]);
+					A[x][y] = matrixVal;
 				}
 			}
 		}
