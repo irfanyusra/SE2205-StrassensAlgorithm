@@ -1,5 +1,5 @@
-//Yusra Irfan
-//Phillip Hung Truong
+//Yusra Irfan -- yirfan3
+//Phillip Hung Truong -- htruon
 
 public class Test{
 
