@@ -36,6 +36,7 @@ public class Assignment1 {
 			int[][] M6 = denseMatrixMult((sub(A, A, 0, size / 2, size / 2, size / 2, size / 2)),
 					(sum(B, B, size / 2, 0, size / 2, size / 2, size / 2)), size / 2);
 
+			
 			//combining M matrices using addition and subtraction 
 			int[][] C00 = sum(sub((sum(M0, M3, 0, 0, 0, 0, size / 2)), M4, 0, 0, 0, 0, size / 2), M6,
 					0, 0, 0, 0,	size / 2);
@@ -112,12 +113,12 @@ public class Assignment1 {
 	
 	// change it
 	public int[][] readMatrix(String filename, int n) throws Exception {
-		Scanner sc = new Scanner(new BufferedReader(new FileReader(filename)));
+		Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)));
 
 		int[][] A = new int[n][n];
-		while (sc.hasNextLine()) {
+		while (scanner.hasNextLine()) {
 			for (int i = 0; i < n; i++) {
-				String[] line = sc.nextLine().trim().split(" "); //idk if we can use this or not 
+				String[] line = scanner.nextLine().trim().split(" "); //idk if we can use this or not 
 				for (int j = 0; j < line.length; j++) {
 					A[i][j] = Integer.parseInt(line[j]);
 				}
