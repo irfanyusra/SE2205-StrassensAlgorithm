@@ -113,12 +113,12 @@ public class Assignment1 {
 	
 	// change it
 	public int[][] readMatrix(String filename, int n) throws Exception {
-		Scanner scanner = new Scanner(new BufferedReader(new FileReader(filename)));
+		Scanner scan = new Scanner(new BufferedReader(new FileReader(filename)));
 
 		int[][] A = new int[n][n];
-		while (scanner.hasNextLine()) {
+		while (scan.hasNextLine()) {
 			for (int i = 0; i < n; i++) {
-				String[] line = scanner.nextLine().trim().split(" "); //idk if we can use this or not 
+				String[] line = scan.nextLine().trim().split(" "); //idk if we can use this or not 
 				for (int j = 0; j < line.length; j++) {
 					A[i][j] = Integer.parseInt(line[j]);
 				}
