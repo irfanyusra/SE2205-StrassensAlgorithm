@@ -14,7 +14,7 @@ public class Assignment1 {
 			CMatrix[0][0] = A[0][0] * B[0][0];
 		else {
 
-			// 7 multiplication operations
+			// Strassen’s Algorithm - 7 multiplication operations
 			int[][] M0 = denseMatrixMult((sum(A, A, 0, 0, size / 2, size / 2, size / 2)),
 					(sum(B, B, 0, 0, size / 2, size / 2, size / 2)), size / 2); 
 			
@@ -68,7 +68,8 @@ public class Assignment1 {
 				CMatrix[x+i][y+j] = C[i][j];
 		}
 	}
-	
+
+	// function to sum the matrix
 	public int[][] sum(int[][] A, int[][] B, int x1, int y1, int x2, int y2, int n) {
 		int[][] array = new int[n][n];
 		for (int i = 0; i < n; i++) {
@@ -78,7 +79,7 @@ public class Assignment1 {
 		return array;
 	}
 
-	
+	//function to subtract the matrix
 	public int[][] sub(int[][] A, int[][] B, int x1, int y1, int x2, int y2, int n) {
 		int[][] array = new int[n][n];
 		for (int i = 0; i < n; i++) {
@@ -89,7 +90,7 @@ public class Assignment1 {
 
 	}
 
-	
+	// function to initialize matrix
 	public int[][] initMatrix(int n) {
 		// 2d array of n size will be initialized
 		int[][] array = new int[n][n];
@@ -100,7 +101,7 @@ public class Assignment1 {
 		return array;
 	}
 
-	
+	// prints out the matrix
 	public void printMatrix(int n, int[][] A) {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
@@ -111,16 +112,16 @@ public class Assignment1 {
 	}
 
 	
-	// change it
+	// readMatrix
 	public int[][] readMatrix(String filename, int n) throws Exception {
-		Scanner scan = new Scanner(new BufferedReader(new FileReader(filename)));
+		Scanner scannedFile = new Scanner(new BufferedReader(new FileReader(filename)));
 
 		int[][] A = new int[n][n];
-		while (scan.hasNextLine()) {
+		while (scannedFile.hasNextLine()) {
 			for (int i = 0; i < n; i++) {
-				String[] line = scan.nextLine().trim().split(" "); //idk if we can use this or not 
-				for (int j = 0; j < line.length; j++) {
-					A[i][j] = Integer.parseInt(line[j]);
+				String[] fileLine = scannedFile.nextLine().trim().split(" ");
+				for (int j = 0; j < fileLine.length; j++) {
+					A[i][j] = Integer.parseInt(fileLine[j]);
 				}
 			}
 		}
