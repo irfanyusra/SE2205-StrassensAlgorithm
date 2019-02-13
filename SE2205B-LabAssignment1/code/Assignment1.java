@@ -117,8 +117,7 @@ public class Assignment1 {
 	
 	// readMatrix
 	public int[][] readMatrix(String filename, int n) throws Exception {
-		Scanner scannedFile = new Scanner(new BufferedReader(new FileReader(filename)));
-
+		 Scanner scannedFile = new Scanner(new BufferedReader(new FileReader("../"+filename)));
 		int[][] A = new int[n][n];
 		while (scannedFile.hasNextLine()) {
 			for (int x = 0; x < n; x++) {
