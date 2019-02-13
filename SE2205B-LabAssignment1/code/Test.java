@@ -16,22 +16,22 @@ public class Test{
       a1.printMatrix(n, matrix);
     }
     else if(testPart==2){
-      matrix=a1.readMatrix("matrix1.txt",n);
+      matrix=a1.readMatrix("..\\matrix1.txt",n);
       a1.printMatrix(n,matrix);
     }
     else if(testPart==3){
       int nextPart = Integer.parseInt(args[1]);
       if(nextPart==1){
-        int[][] matrix1=a1.readMatrix("matrix1.txt",n);
-        int[][] matrix2=a1.readMatrix("matrix2.txt",n);
+        int[][] matrix1=a1.readMatrix("..\\matrix1.txt",n);
+        int[][] matrix2=a1.readMatrix("..\\matrix2.txt",n);
         int[][] sumMatrix = a1.sum(matrix1, matrix2, 1, 1, 0, 1, 3);
         a1.printMatrix(n,matrix1);
         a1.printMatrix(n,matrix2);
         a1.printMatrix(3,sumMatrix);
       }
       else{
-        int[][] matrix1=a1.readMatrix("matrix1.txt",n);
-        int[][] matrix2=a1.readMatrix("matrix2.txt",n);
+        int[][] matrix1=a1.readMatrix("..\\matrix1.txt",n);
+        int[][] matrix2=a1.readMatrix("..\\matrix2.txt",n);
         int[][] sumMatrix = a1.sub(matrix1, matrix2, 1, 1, 0, 1, 3);
         a1.printMatrix(n,matrix1);
         a1.printMatrix(n,matrix2);
@@ -39,8 +39,8 @@ public class Test{
       }
     }
     else{
-      int[][] matrix1=a1.readMatrix("matrix1.txt",n);
-      int[][] matrix2=a1.readMatrix("matrix2.txt",n);
+      int[][] matrix1=a1.readMatrix("..\\matrix1.txt",n);
+      int[][] matrix2=a1.readMatrix("..\\matrix2.txt",n);
       int[][] resultingMatrix=a1.denseMatrixMult(matrix1, matrix2, n);
       a1.printMatrix(n,resultingMatrix);
     }
