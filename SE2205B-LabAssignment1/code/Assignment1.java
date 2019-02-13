@@ -18,7 +18,7 @@ public class Assignment1 {
 			CMatrix[0][0] = A[0][0] * B[0][0];
 		else {
 
-			// Strassen’s Algorithm - 7 multiplication operations
+			// Strassen's Algorithm - 7 multiplication operations
 			int[][] M0 = denseMatrixMult((sum(A, A, 0, 0, size / 2, size / 2, size / 2)),
 					(sum(B, B, 0, 0, size / 2, size / 2, size / 2)), size / 2);
 
@@ -105,7 +105,7 @@ public class Assignment1 {
 			for (int y = 0; y < n; y++) {
 				System.out.print(A[x][y] + " ");
 			}
-			System.out.println();
+			System.out.println(" ");
 		}
 	}
 
