@@ -1,3 +1,4 @@
+
 //Yusra Irfan -- yirfan3
 //Phillip Hung Truong -- htruon
 
@@ -12,26 +13,26 @@ public class Assignment1 {
 
 		int[][] zeroMatrix = initMatrix(size);
 		int[][] CMatrix = new int[size][size];
-		/** base case **/
+		// base case 
 		if (size == 1)
 			CMatrix[0][0] = A[0][0] * B[0][0];
 		else {
 
 			// Strassen’s Algorithm - 7 multiplication operations
 			int[][] M0 = denseMatrixMult((sum(A, A, 0, 0, size / 2, size / 2, size / 2)),
-					(sum(B, B, 0, 0, size / 2, size / 2, size / 2)), size / 2); 
-			
+					(sum(B, B, 0, 0, size / 2, size / 2, size / 2)), size / 2);
+
 			int[][] M1 = denseMatrixMult((sum(A, A, size / 2, 0, size / 2, size / 2, size / 2)),
-					(sum(B, zeroMatrix, 0, 0, 0, 0, size / 2)), size / 2); 
+					(sum(B, zeroMatrix, 0, 0, 0, 0, size / 2)), size / 2);
 
 			int[][] M2 = denseMatrixMult((sum(A, zeroMatrix, 0, 0, 0, 0, size / 2)),
-					(sub(B, B, 0, size / 2, size / 2, size / 2, size / 2)), size / 2); 
+					(sub(B, B, 0, size / 2, size / 2, size / 2, size / 2)), size / 2);
 
 			int[][] M3 = denseMatrixMult((sum(A, zeroMatrix, size / 2, size / 2, 0, 0, size / 2)),
-					(sub(B, B, size / 2, 0, 0, 0, size / 2)), size / 2); 
+					(sub(B, B, size / 2, 0, 0, 0, size / 2)), size / 2);
 
 			int[][] M4 = denseMatrixMult((sum(A, A, 0, 0, 0, size / 2, size / 2)),
-					(sum(B, zeroMatrix, size / 2, size / 2, 0, 0, size / 2)), size / 2); 
+					(sum(B, zeroMatrix, size / 2, size / 2, 0, 0, size / 2)), size / 2);
 
 			int[][] M5 = denseMatrixMult((sub(A, A, size / 2, 0, 0, 0, size / 2)),
 					(sum(B, B, 0, 0, 0, size / 2, size / 2)), size / 2);
@@ -39,37 +40,31 @@ public class Assignment1 {
 			int[][] M6 = denseMatrixMult((sub(A, A, 0, size / 2, size / 2, size / 2, size / 2)),
 					(sum(B, B, size / 2, 0, size / 2, size / 2, size / 2)), size / 2);
 
-			
-			//combining M matrices using addition and subtraction 
-			int[][] C00 = sum(sub((sum(M0, M3, 0, 0, 0, 0, size / 2)), M4, 0, 0, 0, 0, size / 2), M6,
-					0, 0, 0, 0,	size / 2);
+			// combining M matrices using addition and subtraction
+			int[][] C00 = sum(sub((sum(M0, M3, 0, 0, 0, 0, size / 2)), M4, 0, 0, 0, 0, size / 2), M6, 0, 0, 0, 0,
+					size / 2);
 
 			int[][] C01 = sum(M2, M4, 0, 0, 0, 0, size / 2);
 
 			int[][] C10 = sum(M1, M3, 0, 0, 0, 0, size / 2);
 
-			int[][] C11 = sum(sub(sum(M0, M2, 0, 0, 0, 0, size / 2), M1, 0, 0, 0, 0, size / 2), M5, 0, 
-					0, 0, 0, size / 2);
+			int[][] C11 = sum(sub(sum(M0, M2, 0, 0, 0, 0, size / 2), M1, 0, 0, 0, 0, size / 2), M5, 0, 0, 0, 0,
+					size / 2);
 
-			//these can be combined to obtain C0,0, C0,1, C1,0, C1,1. 
-			//This requires two nested loops (to add columns and rows of matrices).
+			// these can be combined to obtain C0,0, C0,1, C1,0, C1,1.
+			// This requires two nested loops (to add columns and rows of matrices).
 
-			joinMatrix(C00, CMatrix, 0, 0);
-			joinMatrix(C01, CMatrix, 0, size / 2);
-			joinMatrix(C10, CMatrix, size / 2, 0);
-			joinMatrix(C11, CMatrix, size / 2, size / 2);	
+			for (int i = 0; i < C00.length; i++) {
+				for (int j = 0; j < C00.length; j++) {
+					CMatrix[i][j] = C00[i][j];
+					CMatrix[i][(size / 2) + j] = C01[i][j];
+					CMatrix[(size / 2) + i][j] = C10[i][j];
+					CMatrix[(size / 2) + i][(size / 2) + j] = C11[i][j];
+				}
+			}
 
 		}
 		return CMatrix;
-	}
-
-	/** Function to join the matrix**/
-	public void joinMatrix(int[][] C, int[][] CMatrix, int x, int y) {
-		
-		for (int i = 0; i < C.length; i++) {
-			for (int j = 0; j < C.length; j++) 
-				CMatrix[x+i][y+j] = C[i][j];
-		}
 	}
 
 	// function to sum the matrix
@@ -82,7 +77,7 @@ public class Assignment1 {
 		return array;
 	}
 
-	//function to subtract the matrix
+	// function to subtract the matrix
 	public int[][] sub(int[][] A, int[][] B, int x1, int y1, int x2, int y2, int n) {
 		int[][] array = new int[n][n];
 		for (int x = 0; x < n; x++) {
@@ -114,10 +109,10 @@ public class Assignment1 {
 		}
 	}
 
-	
 	// readMatrix
 	public int[][] readMatrix(String filename, int n) throws Exception {
-		 Scanner scannedFile = new Scanner(new BufferedReader(new FileReader("../"+filename)));
+		Scanner scannedFile = new Scanner(new BufferedReader(new FileReader("../" + filename)));
+		
 		int[][] A = new int[n][n];
 		while (scannedFile.hasNextLine()) {
 			for (int x = 0; x < n; x++) {
